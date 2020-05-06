@@ -5,6 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.ImageView
+import android.widget.TextView
+import com.bumptech.glide.Glide
 import com.nexon.editmyinfopractice_20200506.R
 import com.nexon.editmyinfopractice_20200506.datas.PizzaStore
 
@@ -21,11 +24,16 @@ class PizzaStoreAdapter(val mContext : Context, resId : Int, val mList : ArrayLi
 
         }
         val row = tempRow!!
+        val logoImg = row.findViewById<ImageView>(R.id.logoImg)
+        val nameText = row.findViewById<TextView>(R.id.nameText)
+        val data = mList.get(position)
+        nameText.text = data.name
+        Glide.with(mContext).load(data.imgUrl).into(logoImg)
 
         return  row
     }
 
-//  스피너 아이템 리스트(드롭다운)에 노출될 각 아이템의 모양을 그리는 함수 부분  
+//  스피너 아이템 리스트(드롭다운)에 노출될 각 아이템의 모양을 그리는 함수 부분
     override fun getDropDownView(position: Int, convertView: View?, parent: ViewGroup): View {
         var tempRow = convertView
         tempRow?.let {
@@ -35,6 +43,11 @@ class PizzaStoreAdapter(val mContext : Context, resId : Int, val mList : ArrayLi
 
         }
         val row = tempRow!!
+        val logoImg = row.findViewById<ImageView>(R.id.logoImg)
+        val nameText = row.findViewById<TextView>(R.id.nameText)
+        val data = mList.get(position)
+        nameText.text = data.name
+        Glide.with(mContext).load(data.imgUrl).into(logoImg)
 
         return  row
     }
