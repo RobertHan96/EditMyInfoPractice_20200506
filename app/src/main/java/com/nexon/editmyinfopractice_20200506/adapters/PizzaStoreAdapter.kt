@@ -11,6 +11,7 @@ import com.nexon.editmyinfopractice_20200506.datas.PizzaStore
 class PizzaStoreAdapter(val mContext : Context, resId : Int, val mList : ArrayList<PizzaStore>) : ArrayAdapter<PizzaStore>(mContext, resId, mList) {
     val inf = LayoutInflater.from(mContext)
 
+//  스피너 아이템 선택전에 화면에 보여지는 디폴트 화면을 그리는 함수 부분
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         var tempRow = convertView
         tempRow?.let {
@@ -24,12 +25,13 @@ class PizzaStoreAdapter(val mContext : Context, resId : Int, val mList : ArrayLi
         return  row
     }
 
+//  스피너 아이템 리스트(드롭다운)에 노출될 각 아이템의 모양을 그리는 함수 부분  
     override fun getDropDownView(position: Int, convertView: View?, parent: ViewGroup): View {
         var tempRow = convertView
         tempRow?.let {
 
         }.let {
-            tempRow = inf.inflate(R.layout.pizza_store_item, null)
+            tempRow = inf.inflate(R.layout.pizza_store_spinner_item, null)
 
         }
         val row = tempRow!!
