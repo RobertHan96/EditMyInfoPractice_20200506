@@ -29,4 +29,18 @@
         android:layout_height="wrap_content"
         android:text="최종 확정"/>
 
+    <TextView
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="좋아하는 피자 브랜드 선택"/>
+
+    <Spinner
+        android:id="@+id/pizzaSpinner"
+        android:layout_marginTop="10dp"
+        android:entries="@array/job_list"
+        android:spinnerMode="dialog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
 </LinearLayout>
