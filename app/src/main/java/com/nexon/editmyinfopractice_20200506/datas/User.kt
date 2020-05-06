@@ -16,6 +16,8 @@ class User {
 
             parsedUser.category = Category.getCategoryFromJson(json.getJSONObject("category"))
 
+//            parsedUser.createdAt.set()
+
             return parsedUser
         }
     }

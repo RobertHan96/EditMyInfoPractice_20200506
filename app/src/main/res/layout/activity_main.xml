@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:text="로그인 아이디"/>
     <TextView
+        android:id="@+id/idText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:text="awdudtls"
@@ -26,6 +27,7 @@
         android:text="이름"/>
 
     <EditText
+        android:id="@+id/nameText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:singleLine="true"
@@ -39,6 +41,7 @@
         android:text="핸드폰 번호"/>
 
     <EditText
+        android:id="@+id/phoneNumText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="phone"
@@ -52,6 +55,7 @@
         android:text="자기소개"/>
 
     <EditText
+        android:id="@+id/memoText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:singleLine="true"
@@ -63,7 +67,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="가입 일자"/>
+
     <TextView
+        android:id="@+id/createdAtText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
@@ -77,6 +83,7 @@
         android:text="업장 종류"/>
 
     <Spinner
+        android:id="@+id/categorySpinner"
         android:layout_marginTop="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
