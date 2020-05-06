@@ -30,32 +30,22 @@ class LoginActivity : BaseActivity() {
 
                     Log.d("로그인응답", json.toString())
 
-//                    val code = json.getInt("code")
-//
-//                    if (code == 200) {
-//
-//                        val data = json.getJSONObject("data")
-//
-//                        val user = data.getJSONObject("user")
-//                        val token = data.getString("token")
-//
-//                        val nowLoginUser = User.getUserFromJsonObject(user)
-//
-//                        GlobalData.loginUser = nowLoginUser
-//                        ContextUtil.setUserToken(mContext, token)
-//
-//                        val myIntent = Intent(mContext, MyPageActivity::class.java)
-//                        startActivity(myIntent)
-//
-//                    }
-//                    else {
-//                        val message = json.getString("message")
-//
-//                        runOnUiThread {
-//                            Toast.makeText(mContext, message, Toast.LENGTH_SHORT).show()
-//                        }
-//
-//                    }
+                    val code = json.getInt("code")
+
+                    if (code == 200) {
+                        val data = json.getJSONObject("data")
+                        val token = data.getString("token")
+                        val myIntent = Intent(mContext, MainActivity::class.java)
+                        myIntent.putExtra("token", token)
+                        startActivity(myIntent)
+                    }
+                    else {
+                        val message = json.getString("message")
+                        runOnUiThread {
+                            Toast.makeText(mContext, message, Toast.LENGTH_SHORT).show()
+                        }
+
+                    }
 
 
                 }
