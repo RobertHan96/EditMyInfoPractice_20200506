@@ -2,6 +2,8 @@ package com.nexon.editmyinfopractice_20200506
 
 import android.os.Bundle
 import android.util.Log
+import com.nexon.editmyinfopractice_20200506.adapters.CategorySpinnerAdapter
+import com.nexon.editmyinfopractice_20200506.datas.Category
 import com.nexon.editmyinfopractice_20200506.datas.User
 import com.nexon.editmyinfopractice_20200506.utils.ConnectServer
 import kotlinx.android.synthetic.main.activity_login.*
@@ -11,6 +13,8 @@ import java.text.SimpleDateFormat
 
 class MainActivity : BaseActivity() {
     lateinit var userToken : String
+    lateinit var categoryAdapter : CategorySpinnerAdapter
+    val categoryList = ArrayList<Category>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,6 +28,9 @@ class MainActivity : BaseActivity() {
     }
 
     override fun setValues() {
+        categoryAdapter = CategorySpinnerAdapter(mContext, R.layout.category_list_item, categoryList)
+        categorySpinner.adapter = categoryAdapter
+
         userToken = intent.getStringExtra("token")
         Log.d("유저 토큰", userToken)
 
