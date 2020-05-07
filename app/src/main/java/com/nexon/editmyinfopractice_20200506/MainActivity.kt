@@ -28,6 +28,7 @@ class MainActivity : BaseActivity() {
     }
 
     override fun setValues() {
+        getCategoryFromServer()
         categoryAdapter = CategorySpinnerAdapter(mContext, R.layout.category_list_item, categoryList)
         categorySpinner.adapter = categoryAdapter
 
@@ -60,6 +61,30 @@ class MainActivity : BaseActivity() {
 
         })
 
+    }
+
+    fun getCategoryFromServer() {
+        ConnectServer.getRequestUserCategory(mContext, object : ConnectServer.JsonResponseHandler{
+            override fun onResponse(json: JSONObject) {
+                Log.d("category list ", json.toString())
+
+                val code = json.getInt("code")
+                if (code == 200) {
+                    val data = json.getJSONObject("data")
+                    val userCategories = data.getJSONArray("user_categories")
+
+                    for (i in 0..userCategories.length()-1) {
+                        val userCategory = userCategories.getJSONObject(i)
+                        val categoryObj = Category.getCategoryFromJson(userCategory)
+                        categoryList.add(categoryObj)
+                    }
+                    runOnUiThread{
+                        categoryAdapter.notifyDataSetChanged()
+                    }
+                }
+            }
+
+        })
     }
 
 
