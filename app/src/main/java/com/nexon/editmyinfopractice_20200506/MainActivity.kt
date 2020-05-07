@@ -7,6 +7,7 @@ import com.nexon.editmyinfopractice_20200506.utils.ConnectServer
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_main.*
 import org.json.JSONObject
+import java.text.SimpleDateFormat
 
 class MainActivity : BaseActivity() {
     lateinit var userToken : String
@@ -42,6 +43,8 @@ class MainActivity : BaseActivity() {
                         nameText.setText(userObj.name)
                         phoneNumText.setText(userObj.phoneNum)
                         memoText.setText(userObj.memo)
+                        val printSdf = SimpleDateFormat("yyyy년 M월 d일")
+                        createdAtText.text = printSdf.format(userObj.createdAt.time)
 
                     }
 
