@@ -54,6 +54,11 @@ class MainActivity : BaseActivity() {
                         val printSdf = SimpleDateFormat("yyyy년 M월 d일 (E)")
                         createdAtText.text = printSdf.format(userObj.createdAt.time)
 
+//                      현재 유저 객체의 카테고리 객체를 indexOf()메서드를 통해 호출하면 인덱스 위치를 알 수 있음
+//                      해당 인덱스 위치를 바탕으로 마이페이지 진입시 실제 내 정보값을 드롭다운 메뉴에서 제대로 보여줄 수 있음
+                        val index = categoryList.indexOf(userObj.category)
+                        categorySpinner.setSelection(index)
+
                     }
 
                 }
