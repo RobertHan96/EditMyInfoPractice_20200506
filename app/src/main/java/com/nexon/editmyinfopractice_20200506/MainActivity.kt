@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import com.nexon.editmyinfopractice_20200506.datas.User
 import com.nexon.editmyinfopractice_20200506.utils.ConnectServer
+import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_main.*
 import org.json.JSONObject
 
@@ -30,6 +31,21 @@ class MainActivity : BaseActivity() {
         ConnectServer.getRequestMyInfo(mContext, userToken, object : ConnectServer.JsonResponseHandler{
             override fun onResponse(json: JSONObject) {
                 Log.d("사용자 정보", json.toString())
+                val code = json.getInt("code")
+                if (code == 200) {
+                    val data = json.getJSONObject("data")
+                    val user = data.getJSONObject("user")
+                    val userObj = User.getUserFromJsonObject(user)
+
+                    runOnUiThread {
+                        idText.text = userObj.loginId
+                        nameText.setText(userObj.name)
+                        phoneNumText.setText(userObj.phoneNum)
+                        memoText.setText(userObj.memo)
+
+                    }
+
+                }
             }
 
         })
