@@ -43,7 +43,7 @@ class MainActivity : BaseActivity() {
                         nameText.setText(userObj.name)
                         phoneNumText.setText(userObj.phoneNum)
                         memoText.setText(userObj.memo)
-                        val printSdf = SimpleDateFormat("yyyy년 M월 d일")
+                        val printSdf = SimpleDateFormat("yyyy년 M월 d일 (E)")
                         createdAtText.text = printSdf.format(userObj.createdAt.time)
 
                     }
